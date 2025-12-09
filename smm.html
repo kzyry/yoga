@@ -42,8 +42,10 @@
         .header {
             background: linear-gradient(135deg, #c084fc 0%, #fb923c 100%);
             color: white;
-            padding: 1.2rem 2rem;
-            text-align: center;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             box-shadow: 0 2px 15px rgba(0,0,0,0.4);
             position: sticky;
             top: 0;
@@ -52,13 +54,9 @@
         }
 
         .header h1 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 0.3rem;
-        }
-
-        .header p {
-            font-size: 0.85rem;
+            margin: 0;
         }
 
         .back-btn {
@@ -112,9 +110,9 @@
             width: var(--sidebar-width);
             background: var(--dark);
             padding: 2rem 1.5rem;
-            height: calc(100vh - 75px);
+            height: calc(100vh - 60px);
             position: sticky;
-            top: 75px;
+            top: 60px;
             overflow-y: auto;
             box-shadow: 2px 0 10px rgba(0,0,0,0.2);
             border-right: 1px solid var(--lighter);
@@ -172,7 +170,7 @@
         /* Section Styles */
         section {
             margin-bottom: 4rem;
-            scroll-margin-top: 90px;
+            scroll-margin-top: 75px;
         }
 
         h2 {
@@ -441,7 +439,6 @@
     <header class="header">
         <a href="index.html" class="back-btn">← Главная</a>
         <h1>🚀 Полная база знаний SMM 2025</h1>
-        <p>Мастерство продвижения в социальных сетях: от алгоритмов до монетизации</p>
     </header>
 
     <div class="container">
