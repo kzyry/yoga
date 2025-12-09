@@ -13,13 +13,17 @@
         }
 
         :root {
-            --primary: #8e44ad;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --dark: #2c3e50;
-            --light: #ecf0f1;
-            --success: #27ae60;
-            --warning: #f39c12;
+            --primary: #c084fc;
+            --secondary: #fb923c;
+            --accent: #fca5a5;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #1e293b;
+            --lighter: #334155;
+            --text: #e2e8f0;
+            --text-dim: #94a3b8;
+            --success: #86efac;
+            --warning: #fbbf24;
             --sidebar-width: 280px;
         }
 
@@ -30,20 +34,21 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
             line-height: 1.7;
-            color: var(--dark);
-            background: #f5f5f5;
+            color: var(--text);
+            background: var(--darker);
         }
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, var(--primary) 0%, #9b59b6 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             padding: 2rem;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.4);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(192, 132, 252, 0.2);
         }
 
         .header h1 {
@@ -75,7 +80,7 @@
         }
 
         .menu-toggle:hover {
-            background: #9b59b6;
+            background: var(--secondary);
         }
 
         /* Container */
@@ -88,13 +93,14 @@
         /* Sidebar Navigation */
         .sidebar {
             width: var(--sidebar-width);
-            background: white;
+            background: var(--dark);
             padding: 2rem 1.5rem;
             height: calc(100vh - 100px);
             position: sticky;
             top: 100px;
             overflow-y: auto;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            border-right: 1px solid var(--lighter);
         }
 
         .sidebar h2 {
@@ -102,7 +108,7 @@
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
             padding-bottom: 0.8rem;
-            border-bottom: 2px solid var(--light);
+            border-bottom: 2px solid var(--lighter);
         }
 
         .sidebar nav ul {
@@ -115,7 +121,7 @@
 
         .sidebar nav a {
             display: block;
-            color: var(--dark);
+            color: var(--text);
             text-decoration: none;
             padding: 0.6rem 1rem;
             border-radius: 6px;
@@ -124,7 +130,7 @@
         }
 
         .sidebar nav a:hover {
-            background: var(--light);
+            background: var(--lighter);
             color: var(--primary);
             transform: translateX(5px);
         }
@@ -132,16 +138,18 @@
         .sidebar nav a.active {
             background: var(--primary);
             color: white;
+            box-shadow: 0 0 12px rgba(192, 132, 252, 0.3);
         }
 
         /* Main Content */
         .main-content {
             flex: 1;
             padding: 2rem;
-            background: white;
+            background: var(--dark);
             margin: 2rem 2rem 2rem 0;
             border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+            border: 1px solid var(--lighter);
         }
 
         /* Section Styles */
@@ -191,12 +199,13 @@
 
         /* Info Boxes */
         .stat-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             padding: 1.5rem;
             margin: 1.5rem 0;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 12px rgba(192, 132, 252, 0.2);
+            border: 1px solid rgba(192, 132, 252, 0.3);
         }
 
         .stat-box h4 {
@@ -205,48 +214,53 @@
         }
 
         .info-box {
-            background: #e3f2fd;
+            background: rgba(96, 165, 250, 0.1);
             border-left: 4px solid var(--secondary);
             padding: 1.5rem;
             margin: 1.5rem 0;
             border-radius: 0 8px 8px 0;
+            border: 1px solid rgba(96, 165, 250, 0.2);
         }
 
         .success-box {
-            background: #e8f5e9;
+            background: rgba(52, 211, 153, 0.1);
             border-left: 4px solid var(--success);
             padding: 1.5rem;
             margin: 1.5rem 0;
             border-radius: 0 8px 8px 0;
+            border: 1px solid rgba(52, 211, 153, 0.2);
         }
 
         .warning-box {
-            background: #fff3cd;
+            background: rgba(251, 191, 36, 0.1);
             border-left: 4px solid var(--warning);
             padding: 1.5rem;
             margin: 1.5rem 0;
             border-radius: 0 8px 8px 0;
+            border: 1px solid rgba(251, 191, 36, 0.2);
         }
 
         .danger-box {
-            background: #ffebee;
+            background: rgba(248, 113, 113, 0.1);
             border-left: 4px solid var(--accent);
             padding: 1.5rem;
             margin: 1.5rem 0;
             border-radius: 0 8px 8px 0;
+            border: 1px solid rgba(248, 113, 113, 0.2);
         }
 
         .key-insight {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
+            background: linear-gradient(135deg, rgba(192, 132, 252, 0.15) 0%, rgba(251, 146, 60, 0.15) 100%);
+            color: var(--text);
             padding: 2rem;
             margin: 2rem 0;
             border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+            border: 2px solid rgba(192, 132, 252, 0.3);
         }
 
         .key-insight h3 {
-            color: white;
+            color: var(--primary);
             margin-top: 0;
         }
 
@@ -255,13 +269,14 @@
             width: 100%;
             border-collapse: collapse;
             margin: 1.5rem 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
             border-radius: 8px;
             overflow: hidden;
+            border: 1px solid var(--lighter);
         }
 
         th {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             padding: 1rem;
             text-align: left;
@@ -270,11 +285,13 @@
 
         td {
             padding: 1rem;
-            border-bottom: 1px solid var(--light);
+            border-bottom: 1px solid var(--lighter);
+            background: var(--light);
+            color: var(--text);
         }
 
-        tr:hover {
-            background: #f8f9fa;
+        tr:hover td {
+            background: var(--lighter);
         }
 
         /* Blockquote */
@@ -283,8 +300,8 @@
             padding-left: 1.5rem;
             margin: 1.5rem 0;
             font-style: italic;
-            color: #555;
-            background: #f9f9f9;
+            color: var(--text-dim);
+            background: rgba(192, 132, 252, 0.05);
             padding: 1rem 1.5rem;
             border-radius: 0 8px 8px 0;
         }
@@ -294,8 +311,9 @@
             text-align: center;
             padding: 2rem;
             background: var(--dark);
-            color: white;
+            color: var(--text);
             margin-top: 4rem;
+            border-top: 1px solid var(--lighter);
         }
 
         .footer p {
@@ -314,7 +332,7 @@
             padding: 1rem;
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 12px rgba(192, 132, 252, 0.3);
             display: none;
             z-index: 1000;
             font-size: 1.5rem;
@@ -324,8 +342,9 @@
         }
 
         .scroll-top:hover {
-            background: #9b59b6;
+            background: var(--secondary);
             transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(251, 146, 60, 0.4);
         }
 
         .scroll-top.visible {
@@ -417,7 +436,7 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: var(--dark);
         }
 
         ::-webkit-scrollbar-thumb {
@@ -426,7 +445,7 @@
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #9b59b6;
+            background: var(--secondary);
         }
     </style>
 </head>
