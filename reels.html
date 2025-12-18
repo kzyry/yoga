@@ -126,20 +126,26 @@
         .table-container {
             background: var(--dark);
             border-radius: 12px;
-            overflow: hidden;
+            overflow-x: auto;
             border: 1px solid var(--lighter);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            table-layout: auto;
+            min-width: 800px;
         }
 
         thead {
             background: var(--light);
+        }
+
+        thead tr {
             position: sticky;
-            top: 120px;
+            top: 0;
             z-index: 10;
+            background: var(--light);
         }
 
         th {
@@ -281,6 +287,7 @@
 
             table {
                 font-size: 0.85rem;
+                min-width: 600px;
             }
 
             th, td {
@@ -289,10 +296,6 @@
 
             .caption-cell {
                 max-width: 200px;
-            }
-
-            thead {
-                top: 100px;
             }
         }
     </style>
