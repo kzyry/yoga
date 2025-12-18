@@ -190,12 +190,20 @@
 
         th.num-col {
             width: 60px;
+            min-width: 60px;
+            max-width: 60px;
             text-align: center;
             cursor: default;
         }
 
         th.num-col:hover {
             background: var(--light);
+        }
+
+        th.author-col {
+            width: 200px;
+            min-width: 200px;
+            max-width: 200px;
         }
 
         th:hover {
@@ -241,6 +249,12 @@
         .author-cell {
             font-weight: 600;
             color: var(--primary);
+            width: 200px;
+            min-width: 200px;
+            max-width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .url-cell a {
@@ -518,7 +532,7 @@
                 <thead>
                     <tr>
                         <th class="num-col">№</th>
-                        <th class="sortable" data-column="author">Автор</th>
+                        <th class="sortable author-col" data-column="author">Автор</th>
                         <th>URL</th>
                         <th class="sortable" data-column="views">Просмотры</th>
                         <th class="sortable" data-column="date">Дата</th>
