@@ -104,6 +104,32 @@
             border-color: var(--primary);
         }
 
+        .sort-buttons {
+            display: none;
+        }
+
+        .sort-btn {
+            padding: 0.5rem 1rem;
+            background: var(--light);
+            border: 1px solid var(--lighter);
+            border-radius: 6px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .sort-btn:active {
+            transform: scale(0.95);
+        }
+
+        .sort-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
         .stats {
             display: flex;
             gap: 2rem;
@@ -243,6 +269,9 @@
             line-height: 1.5;
             color: var(--text-dim);
             font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .no-results {
@@ -304,8 +333,8 @@
         .reel-card {
             background: var(--light);
             border-radius: 12px;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
             border: 1px solid var(--lighter);
             transition: all 0.2s;
         }
@@ -325,43 +354,46 @@
         .reel-card-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            gap: 1rem;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            gap: 0.75rem;
         }
 
         .reel-author {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text);
+            font-size: 1rem;
             word-break: break-word;
+        }
+
+        .reel-num {
+            color: var(--text-dim);
+            font-weight: 400;
         }
 
         .reel-views {
             font-weight: 600;
             color: var(--success);
             white-space: nowrap;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .reel-meta {
             display: flex;
             gap: 1rem;
-            margin-bottom: 0.75rem;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .reel-date {
             color: var(--text-dim);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .reel-link {
-            display: inline-block;
-            color: var(--secondary);
+            color: var(--text-dim);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             padding: 0.25rem 0;
             min-height: 44px;
             display: inline-flex;
@@ -403,6 +435,18 @@
             .search-input {
                 font-size: 16px; /* Prevent iOS zoom on focus */
                 padding: 0.875rem 1rem;
+            }
+
+            .sort-buttons {
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+
+            .sort-btn {
+                flex: 1;
+                min-width: calc(33.333% - 0.5rem);
             }
 
             .stats {
@@ -454,6 +498,11 @@
                     class="search-input"
                     placeholder="🔍 Поиск по автору, описанию..."
                 >
+            </div>
+            <div class="sort-buttons">
+                <button class="sort-btn" data-sort="author">По автору</button>
+                <button class="sort-btn" data-sort="views">По просмотрам</button>
+                <button class="sort-btn" data-sort="date">По дате</button>
             </div>
             <div class="stats">
                 <div class="stat-item">
@@ -594,11 +643,11 @@
                 return `
                 <div class="reel-card">
                     <div class="reel-card-header">
-                        <div class="reel-author">#${globalIndex} · ${item.author}</div>
-                        <div class="reel-views">👁 ${formatNumber(item.views)}</div>
+                        <div class="reel-author"><span class="reel-num">${globalIndex}</span> ${item.author}</div>
+                        <div class="reel-views">${formatNumber(item.views)}</div>
                     </div>
                     <div class="reel-meta">
-                        <div class="reel-date">📅 ${formatDate(item.date)}</div>
+                        <div class="reel-date">${formatDate(item.date)}</div>
                         <a href="${item.url}" target="_blank" class="reel-link">Открыть видео ↗</a>
                     </div>
                 </div>
@@ -648,11 +697,19 @@
                 }
             });
 
-            // Update sort indicators
+            // Update sort indicators for table headers
             document.querySelectorAll('th.sortable').forEach(th => {
                 th.classList.remove('sorted-asc', 'sorted-desc');
                 if (th.dataset.column === column) {
                     th.classList.add(currentSort.direction === 'asc' ? 'sorted-asc' : 'sorted-desc');
+                }
+            });
+
+            // Update sort buttons
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.sort === column) {
+                    btn.classList.add('active');
                 }
             });
 
@@ -685,6 +742,10 @@
         // Event listeners
         document.querySelectorAll('th.sortable').forEach(th => {
             th.addEventListener('click', () => sortTable(th.dataset.column));
+        });
+
+        document.querySelectorAll('.sort-btn').forEach(btn => {
+            btn.addEventListener('click', () => sortTable(btn.dataset.sort));
         });
 
         document.getElementById('searchInput').addEventListener('input', (e) => {
