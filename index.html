@@ -1026,6 +1026,21 @@
             } else {
                 activeTagFilters.add(tag);
             }
+
+            // Reset sort when tag filter is toggled
+            currentSort = { column: null, direction: null };
+
+            // Remove all sort indicators
+            document.querySelectorAll('th.sortable').forEach(th => {
+                th.classList.remove('sorted-asc', 'sorted-desc');
+            });
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelectorAll('.sort-tag').forEach(sortTag => {
+                sortTag.classList.remove('active');
+            });
+
             applyFilters();
         }
 
