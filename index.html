@@ -13,16 +13,16 @@
         }
 
         :root {
-            --primary: #c084fc;
-            --secondary: #fb923c;
-            --accent: #fca5a5;
-            --dark: #0f172a;
-            --darker: #020617;
-            --light: #1e293b;
-            --lighter: #334155;
-            --text: #e2e8f0;
-            --text-dim: #94a3b8;
-            --success: #86efac;
+            --primary: #58a6ff;
+            --secondary: #a371f7;
+            --accent: #f85149;
+            --bg-main: #191919;
+            --bg-card: #141414;
+            --border: #252525;
+            --text: #c9d1d9;
+            --text-dim: #5E5E5E;
+            --success: #018725;
+            --gold: #FF9900;
         }
 
         html {
@@ -30,8 +30,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
-            background: var(--darker);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Ubuntu', sans-serif;
+            background: var(--bg-main);
             color: var(--text);
             line-height: 1.6;
             min-height: 100vh;
@@ -40,12 +40,12 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #c084fc 0%, #fb923c 100%);
+            background: var(--bg-card);
             height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: 1px solid var(--lighter);
+            border-bottom: 1px solid var(--border);
         }
 
         .header h1 {
@@ -70,11 +70,11 @@
         }
 
         .card {
-            background: var(--dark);
+            background: var(--bg-card);
             border-radius: 16px;
             padding: 2.5rem;
-            border: 2px solid var(--lighter);
-            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
             position: relative;
             overflow: hidden;
         }
@@ -84,17 +84,17 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            bottom: 0;
+            width: 4px;
+            background: var(--primary);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.2s ease;
         }
 
         .card:hover {
             border-color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(192, 132, 252, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.15);
         }
 
         .card:hover::before {
@@ -139,28 +139,29 @@
 
         .btn {
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--primary);
             color: white;
             padding: 1rem 2rem;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             border: none;
             cursor: pointer;
             font-size: 1rem;
         }
 
         .btn:hover {
+            background: #6eb4ff;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(192, 132, 252, 0.4);
+            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3);
         }
 
         .footer {
-            background: var(--dark);
+            background: var(--bg-card);
             padding: 2rem;
             text-align: center;
-            border-top: 1px solid var(--lighter);
+            border-top: 1px solid var(--border);
             margin-top: auto;
         }
 
@@ -297,7 +298,7 @@
         </div>
 
         <!-- Info Section -->
-        <div style="margin-top: 4rem; padding: 2rem; background: var(--dark); border-radius: 12px; border: 1px solid var(--lighter);">
+        <div style="margin-top: 4rem; padding: 2rem; background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border);">
             <h3 style="color: var(--primary); margin-bottom: 1rem;">💡 Как использовать эту базу знаний</h3>
             <ul style="color: var(--text-dim); line-height: 2; list-style-position: inside;">
                 <li><strong style="color: var(--text);">Целевая аудитория:</strong> Понимание болей, потребностей и триггеров покупки для создания релевантного контента</li>
