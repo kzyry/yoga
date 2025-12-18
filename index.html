@@ -2,14 +2,1108 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=reels.html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>База знаний Karina Yoga - Перенаправление...</title>
-    <script>
-        window.location.href = 'reels.html';
-    </script>
+    <meta name="description" content="База Reels с просмотрами 50K+ за последние 180 дней">
+    <title>База Reels 50K+ | Karina Yoga</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #58a6ff;
+            --secondary: #a371f7;
+            --accent: #f85149;
+            --bg-main: #191919;
+            --bg-card: #141414;
+            --border: #252525;
+            --text: #c9d1d9;
+            --text-dim: #5E5E5E;
+            --success: #018725;
+            --gold: #FF9900;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Ubuntu', sans-serif;
+            background: var(--bg-main);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: #0C0C0C;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #303030;
+            position: relative;
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            width: 100%;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #5e5e5e;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            color: #F8FAFC;
+        }
+
+        .nav-link.active {
+            color: #F8FAFC;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .controls {
+            display: none;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.75rem 1rem;
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+        }
+
+        .sort-buttons {
+            display: none;
+        }
+
+        .sort-btn {
+            padding: 0;
+            margin: 0;
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .sort-btn:hover {
+            background: #222222;
+            border-color: var(--primary);
+        }
+
+        .sort-btn:active {
+            transform: scale(0.95);
+        }
+
+        .sort-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat-value {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .table-section {
+            background: #141414;
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .table-section {
+                padding: 16px;
+            }
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .table-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+        }
+
+        .table-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #F8FAFC;
+        }
+
+        .tag-filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-tag {
+            display: inline-block;
+            padding: 0.35rem 0.85rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+            border: 1px solid;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            opacity: 0.5;
+        }
+
+        .filter-tag:hover {
+            opacity: 0.8;
+        }
+
+        .filter-tag.active {
+            opacity: 1;
+        }
+
+        .sort-tag {
+            background: var(--bg-main);
+            border-color: var(--border);
+            color: #5e5e5e;
+        }
+
+        .sort-tag.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        @media (min-width: 769px) {
+            .sort-tag {
+                display: none;
+            }
+        }
+
+        .table-container {
+            background: #141414;
+            border-radius: 12px;
+            border: 1px solid #252525;
+            overflow: hidden;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: auto;
+            min-width: 800px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 15px;
+            background: #191919;
+        }
+
+        thead {
+            background: var(--light);
+            position: relative;
+            z-index: 10;
+        }
+
+        thead tr {
+            background: #191919;
+        }
+
+        th {
+            padding: 12px 16px;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 13px;
+            color: #5E5E5E;
+            border-bottom: 1px solid #252525;
+            user-select: none;
+            position: sticky;
+            top: 0;
+            background: #191919;
+            z-index: 10;
+        }
+
+        th.sortable {
+            cursor: pointer;
+        }
+
+        th.num-col {
+            width: 100px;
+            min-width: 100px;
+            max-width: 100px;
+            text-align: left;
+            cursor: default;
+        }
+
+        th.num-col:hover {
+            background: var(--light);
+        }
+
+        th.author-col {
+            width: auto;
+        }
+
+        th.views-col,
+        th.date-col,
+        th.tags-col {
+            text-align: right;
+            width: 250px;
+            min-width: 250px;
+            max-width: 250px;
+        }
+
+        th.tags-col {
+            padding-right: 16px;
+        }
+
+        td.num-cell {
+            text-align: left;
+            color: var(--text-dim);
+            font-weight: 600;
+            font-size: 0.9rem;
+            width: 100px;
+            font-family: 'Space Mono', 'Monaco', monospace;
+        }
+
+        th.sortable::after {
+            display: none;
+        }
+
+        /* Arrow on right for Author column */
+        th.author-col.sorted-asc::after,
+        th.author-col.sorted-desc::after {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 11px;
+            margin-left: 4px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        th.author-col.sorted-asc::after {
+            background-image: url('data:image/svg+xml;utf8,<svg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.18164 0.5C4.18164 0.223858 3.95778 0 3.68164 0C3.4055 0 3.18164 0.223858 3.18164 0.5H3.68164L4.18164 0.5ZM3.32809 10.8536C3.52335 11.0488 3.83993 11.0488 4.03519 10.8536L7.21717 7.67157C7.41244 7.47631 7.41244 7.15973 7.21717 6.96447C7.02191 6.7692 6.70533 6.7692 6.51007 6.96447L3.68164 9.79289L0.853214 6.96447C0.657951 6.7692 0.341369 6.7692 0.146107 6.96447C-0.0491554 7.15973 -0.0491554 7.47631 0.146107 7.67157L3.32809 10.8536ZM3.68164 0.5H3.18164L3.18164 10.5H3.68164H4.18164L4.18164 0.5L3.68164 0.5Z" fill="%23F8FAFC"/></svg>');
+            transform: rotate(180deg);
+        }
+
+        th.author-col.sorted-desc::after {
+            background-image: url('data:image/svg+xml;utf8,<svg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.18164 0.5C4.18164 0.223858 3.95778 0 3.68164 0C3.4055 0 3.18164 0.223858 3.18164 0.5H3.68164L4.18164 0.5ZM3.32809 10.8536C3.52335 11.0488 3.83993 11.0488 4.03519 10.8536L7.21717 7.67157C7.41244 7.47631 7.41244 7.15973 7.21717 6.96447C7.02191 6.7692 6.70533 6.7692 6.51007 6.96447L3.68164 9.79289L0.853214 6.96447C0.657951 6.7692 0.341369 6.7692 0.146107 6.96447C-0.0491554 7.15973 -0.0491554 7.47631 0.146107 7.67157L3.32809 10.8536ZM3.68164 0.5H3.18164L3.18164 10.5H3.68164H4.18164L4.18164 0.5L3.68164 0.5Z" fill="%23F8FAFC"/></svg>');
+        }
+
+        /* Arrow on left for Views and Date columns */
+        th.views-col.sorted-asc::before,
+        th.views-col.sorted-desc::before,
+        th.date-col.sorted-asc::before,
+        th.date-col.sorted-desc::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 11px;
+            margin-right: 4px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        th.views-col.sorted-asc::before,
+        th.date-col.sorted-asc::before {
+            background-image: url('data:image/svg+xml;utf8,<svg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.18164 0.5C4.18164 0.223858 3.95778 0 3.68164 0C3.4055 0 3.18164 0.223858 3.18164 0.5H3.68164L4.18164 0.5ZM3.32809 10.8536C3.52335 11.0488 3.83993 11.0488 4.03519 10.8536L7.21717 7.67157C7.41244 7.47631 7.41244 7.15973 7.21717 6.96447C7.02191 6.7692 6.70533 6.7692 6.51007 6.96447L3.68164 9.79289L0.853214 6.96447C0.657951 6.7692 0.341369 6.7692 0.146107 6.96447C-0.0491554 7.15973 -0.0491554 7.47631 0.146107 7.67157L3.32809 10.8536ZM3.68164 0.5H3.18164L3.18164 10.5H3.68164H4.18164L4.18164 0.5L3.68164 0.5Z" fill="%23F8FAFC"/></svg>');
+            transform: rotate(180deg);
+        }
+
+        th.views-col.sorted-desc::before,
+        th.date-col.sorted-desc::before {
+            background-image: url('data:image/svg+xml;utf8,<svg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.18164 0.5C4.18164 0.223858 3.95778 0 3.68164 0C3.4055 0 3.18164 0.223858 3.18164 0.5H3.68164L4.18164 0.5ZM3.32809 10.8536C3.52335 11.0488 3.83993 11.0488 4.03519 10.8536L7.21717 7.67157C7.41244 7.47631 7.41244 7.15973 7.21717 6.96447C7.02191 6.7692 6.70533 6.7692 6.51007 6.96447L3.68164 9.79289L0.853214 6.96447C0.657951 6.7692 0.341369 6.7692 0.146107 6.96447C-0.0491554 7.15973 -0.0491554 7.47631 0.146107 7.67157L3.32809 10.8536ZM3.68164 0.5H3.18164L3.18164 10.5H3.68164H4.18164L4.18164 0.5L3.68164 0.5Z" fill="%23F8FAFC"/></svg>');
+        }
+
+        td {
+            padding: 8px 16px;
+            border-bottom: 1px solid #252525;
+            vertical-align: middle;
+            height: 40px;
+            font-size: 15px;
+            background: #191919;
+        }
+
+        tbody tr {
+            height: 40px;
+            background: #191919;
+            transition: background 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: #222222 !important;
+        }
+
+        tbody tr:hover td {
+            background: #222222;
+        }
+
+        .author-cell {
+            font-weight: 600;
+            color: #F8FAFC;
+            width: auto;
+        }
+
+        .url-cell a {
+            color: var(--secondary);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .url-cell a:hover {
+            text-decoration: underline;
+        }
+
+        .views-cell {
+            font-weight: 600;
+            color: #F8FAFC;
+            white-space: nowrap;
+            font-family: 'Space Mono', 'Monaco', monospace;
+            text-align: right;
+            width: 250px;
+        }
+
+        .views-cell.high-views {
+            background: linear-gradient(to left, rgba(0, 156, 18, 0.15), rgba(0, 156, 18, 0));
+        }
+
+        .views-cell.medium-views {
+            background: linear-gradient(to left, rgba(185, 125, 0, 0.15), rgba(185, 125, 0, 0));
+        }
+
+        .date-cell {
+            color: var(--text-dim);
+            white-space: nowrap;
+            font-size: 15px;
+            text-align: right;
+            width: 250px;
+        }
+
+        .tags-cell {
+            width: 250px;
+            line-height: 1.5;
+            text-align: right;
+            padding-right: 16px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0;
+            white-space: nowrap;
+            border: 1px solid;
+        }
+
+        .tag-yoga {
+            background: rgba(88, 166, 255, 0.15);
+            color: #58a6ff;
+            border-color: rgba(88, 166, 255, 0.3);
+        }
+
+        .tag-gym {
+            background: rgba(248, 81, 73, 0.15);
+            color: #f85149;
+            border-color: rgba(248, 81, 73, 0.3);
+        }
+
+        .tag-life {
+            background: rgba(163, 113, 247, 0.15);
+            color: #a371f7;
+            border-color: rgba(163, 113, 247, 0.3);
+        }
+
+        .tag-talking {
+            background: rgba(185, 125, 0, 0.15);
+            color: #d89614;
+            border-color: rgba(185, 125, 0, 0.3);
+        }
+
+        .tag-food {
+            background: rgba(0, 156, 18, 0.15);
+            color: #009c12;
+            border-color: rgba(0, 156, 18, 0.3);
+        }
+
+        .tag-skin {
+            background: rgba(255, 105, 180, 0.15);
+            color: #ff69b4;
+            border-color: rgba(255, 105, 180, 0.3);
+        }
+
+        .tag-mommy {
+            background: rgba(255, 138, 101, 0.15);
+            color: #ff8a65;
+            border-color: rgba(255, 138, 101, 0.3);
+        }
+
+        .tag-massage {
+            background: rgba(0, 168, 150, 0.15);
+            color: #00a896;
+            border-color: rgba(0, 168, 150, 0.3);
+        }
+
+        .no-tags {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .no-results {
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-dim);
+        }
+
+        .loading {
+            padding: 3rem;
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .pagination {
+            display: none !important;
+        }
+
+        .page-btn {
+            padding: 0.5rem 1rem;
+            background: var(--light);
+            border: 1px solid var(--lighter);
+            border-radius: 6px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .page-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .page-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .page-info {
+            color: var(--text-dim);
+        }
+
+        /* Mobile Cards */
+        .mobile-cards {
+            display: none;
+        }
+
+        .reel-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .reel-card:active {
+            transform: scale(0.98);
+            border-color: var(--primary);
+        }
+
+        @media (hover: hover) {
+            .reel-card:hover {
+                transform: translateY(-2px);
+                border-color: var(--primary);
+            }
+        }
+
+        .reel-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.35rem;
+            gap: 0.5rem;
+        }
+
+        .reel-author {
+            font-weight: 400;
+            color: #F8FAFC;
+            font-size: 0.95rem;
+            word-break: break-word;
+        }
+
+        .reel-num {
+            color: var(--text-dim);
+            font-weight: 400;
+            font-family: 'Space Mono', 'Monaco', monospace;
+        }
+
+        .reel-views {
+            font-weight: 600;
+            color: #F8FAFC;
+            white-space: nowrap;
+            font-size: 0.9rem;
+            font-family: 'Space Mono', 'Monaco', monospace;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+        }
+
+        .reel-views.high-views {
+            background: linear-gradient(to left, rgba(0, 156, 18, 0.15), rgba(0, 156, 18, 0));
+        }
+
+        .reel-views.medium-views {
+            background: linear-gradient(to left, rgba(185, 125, 0, 0.15), rgba(185, 125, 0, 0));
+        }
+
+        .reel-tags {
+            margin: 0;
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .reel-date {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            margin-left: auto;
+        }
+
+        .reel-caption {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--lighter);
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                padding: 0 1rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+            }
+
+            .nav-link {
+                font-size: 0.85rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .controls {
+                padding: 1rem;
+            }
+
+            .search-input {
+                font-size: 16px; /* Prevent iOS zoom on focus */
+                padding: 0.875rem 1rem;
+            }
+
+            .sort-buttons {
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+
+            .sort-btn {
+                flex: 1;
+                min-width: calc(33.333% - 0.5rem);
+                padding: 0.75rem 0.5rem;
+            }
+
+            .stats {
+                gap: 1rem;
+            }
+
+            .stat-item {
+                font-size: 0.85rem;
+            }
+
+            /* Hide table on mobile */
+            .table-container {
+                background: transparent;
+                border: none;
+            }
+
+            .table-container table {
+                display: none !important;
+            }
+
+            /* Show cards on mobile */
+            .mobile-cards {
+                display: block;
+            }
+
+            .pagination {
+                padding: 1rem;
+                gap: 0.5rem;
+            }
+
+            .page-btn {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.9rem;
+            }
+
+            .page-info {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <p>Перенаправление на <a href="reels.html">Reels Base</a>...</p>
+    <header class="header">
+        <div class="header-inner">
+            <nav class="nav-menu">
+                <a href="reels.html" class="nav-link active">Reels Base</a>
+                <a href="audience.html" class="nav-link">ЦА</a>
+                <a href="smm.html" class="nav-link">SMM Base</a>
+                <a href="analysis.html" class="nav-link">Summary</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="controls">
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="search-input"
+                    placeholder="🔍 Поиск по автору, описанию..."
+                >
+            </div>
+            <div class="sort-buttons">
+                <button class="sort-btn" data-sort="author">Автор</button>
+                <button class="sort-btn" data-sort="views">Просмотры</button>
+                <button class="sort-btn" data-sort="date">Дата</button>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <div class="table-header">
+                <h2 class="table-title">Reels Base</h2>
+                <div class="tag-filters" id="tagFilters">
+                    <span class="filter-tag sort-tag" data-sort="views">Просмотры</span>
+                    <span class="filter-tag sort-tag" data-sort="date">Дата</span>
+                    <span class="filter-tag tag-yoga" data-tag="yoga">yoga</span>
+                    <span class="filter-tag tag-gym" data-tag="gym">gym</span>
+                    <span class="filter-tag tag-life" data-tag="life">life</span>
+                    <span class="filter-tag tag-talking" data-tag="talking">talking</span>
+                    <span class="filter-tag tag-food" data-tag="food">food</span>
+                    <span class="filter-tag tag-skin" data-tag="skin">skin</span>
+                    <span class="filter-tag tag-mommy" data-tag="mommy">mommy</span>
+                    <span class="filter-tag tag-massage" data-tag="massage">massage</span>
+                </div>
+            </div>
+
+            <div class="table-container">
+            <div class="loading" id="loadingMessage">Загрузка данных...</div>
+            <div class="table-wrapper">
+                <table id="reelsTable" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th class="num-col">№</th>
+                            <th class="sortable author-col" data-column="author">Автор</th>
+                            <th class="sortable views-col" data-column="views">Просмотры</th>
+                            <th class="tags-col">Теги</th>
+                            <th class="sortable date-col" data-column="date">Дата</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            </div>
+            <div class="mobile-cards" id="mobileCards">
+            </div>
+            <div class="no-results" id="noResults" style="display: none;">
+                Ничего не найдено
+            </div>
+        </div>
+        </div>
+
+        <div class="pagination" id="pagination" style="display: none;">
+            <button class="page-btn" id="prevBtn">← Назад</button>
+            <span class="page-info" id="pageInfo">Страница 1 из 1</span>
+            <button class="page-btn" id="nextBtn">Вперед →</button>
+        </div>
+    </div>
+
+    <script>
+        let reelsData = [];
+        let originalData = [];
+        let filteredData = [];
+        let currentSort = { column: null, direction: 'asc' };
+        let activeTagFilters = new Set(); // Empty by default - show all
+
+        // Load JSON data
+        async function loadData() {
+            try {
+                const response = await fetch('filtered_50k_views.json');
+                reelsData = await response.json();
+                originalData = [...reelsData]; // Save original order
+
+                document.getElementById('loadingMessage').style.display = 'none';
+                document.getElementById('reelsTable').style.display = 'table';
+
+                applyFilters();
+            } catch (error) {
+                document.getElementById('loadingMessage').innerHTML =
+                    '❌ Ошибка загрузки данных: ' + error.message;
+            }
+        }
+
+        // Format number with spaces
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('ru-RU');
+        }
+
+        // Get first line of caption
+        function getFirstLine(text) {
+            if (!text) return '';
+            return text.split('\n')[0];
+        }
+
+        // Render table and mobile cards
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            const mobileCards = document.getElementById('mobileCards');
+
+            if (filteredData.length === 0) {
+                document.getElementById('reelsTable').style.display = 'none';
+                mobileCards.innerHTML = '';
+                document.getElementById('noResults').style.display = 'block';
+                return;
+            }
+
+            document.getElementById('reelsTable').style.display = 'table';
+            document.getElementById('noResults').style.display = 'none';
+
+            // Render desktop table - all records
+            tbody.innerHTML = filteredData.map((item, index) => {
+                const globalIndex = index + 1;
+                const tagsHtml = item.tags && item.tags.length > 0
+                    ? item.tags.map(tag => `<span class="tag tag-${tag}">${tag}</span>`).join(' ')
+                    : '<span class="no-tags">—</span>';
+
+                // Determine views class based on value
+                let viewsClass = 'views-cell';
+                if (item.views > 200000) {
+                    viewsClass += ' high-views';
+                } else if (item.views >= 100000) {
+                    viewsClass += ' medium-views';
+                }
+
+                return `
+                <tr onclick="window.open('${item.url}', '_blank')" style="cursor: pointer;">
+                    <td class="num-cell">${globalIndex}</td>
+                    <td class="author-cell">${item.author}</td>
+                    <td class="${viewsClass}">${formatNumber(item.views)}</td>
+                    <td class="tags-cell">${tagsHtml}</td>
+                    <td class="date-cell">${formatDate(item.date)}</td>
+                </tr>
+                `;
+            }).join('');
+
+            // Render mobile cards - all records
+            mobileCards.innerHTML = filteredData.map((item, index) => {
+                const globalIndex = index + 1;
+                const tagsHtml = item.tags && item.tags.length > 0
+                    ? item.tags.map(tag => `<span class="tag tag-${tag}">${tag}</span>`).join(' ')
+                    : '<span class="no-tags">—</span>';
+
+                // Determine views class based on value
+                let viewsClass = 'reel-views';
+                if (item.views > 200000) {
+                    viewsClass += ' high-views';
+                } else if (item.views >= 100000) {
+                    viewsClass += ' medium-views';
+                }
+
+                return `
+                <a href="${item.url}" target="_blank" class="reel-card">
+                    <div class="reel-card-header">
+                        <div class="reel-author"><span class="reel-num">${globalIndex}</span> ${item.author}</div>
+                        <div class="${viewsClass}">${formatNumber(item.views)}</div>
+                    </div>
+                    <div class="reel-tags">
+                        ${tagsHtml}
+                        <div class="reel-date">${formatDate(item.date)}</div>
+                    </div>
+                </a>
+                `;
+            }).join('');
+        }
+
+        // Sort table
+        function sortTable(column) {
+            // Determine next sort state
+            if (currentSort.column === column && currentSort.direction === 'desc') {
+                // Second click - reset to original order
+                currentSort.column = null;
+                currentSort.direction = null;
+
+                // Restore original order with filters applied
+                applyFilters();
+
+                // Remove all sort indicators
+                document.querySelectorAll('th.sortable').forEach(th => {
+                    th.classList.remove('sorted-asc', 'sorted-desc');
+                });
+                document.querySelectorAll('.sort-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+
+                return;
+            } else {
+                // First click - sort descending
+                currentSort.column = column;
+                currentSort.direction = 'desc';
+            }
+
+            // Perform sort (descending only)
+            filteredData.sort((a, b) => {
+                let aVal, bVal;
+
+                if (column === 'author') {
+                    aVal = a.author.toLowerCase();
+                    bVal = b.author.toLowerCase();
+                    return aVal < bVal ? 1 : -1;
+                } else if (column === 'views') {
+                    aVal = a.views;
+                    bVal = b.views;
+                    return bVal - aVal;
+                } else if (column === 'date') {
+                    // Sort from new to old (bigger timestamp first)
+                    aVal = new Date(a.date).getTime();
+                    bVal = new Date(b.date).getTime();
+                    return bVal - aVal;
+                }
+            });
+
+            // Update sort indicators for table headers
+            document.querySelectorAll('th.sortable').forEach(th => {
+                th.classList.remove('sorted-asc', 'sorted-desc');
+                if (th.dataset.column === column) {
+                    th.classList.add('sorted-desc');
+                }
+            });
+
+            // Update sort buttons
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.sort === column) {
+                    btn.classList.add('active');
+                }
+            });
+
+            renderTable();
+        }
+
+        // Search/filter
+        function filterData(searchTerm) {
+            const term = searchTerm.toLowerCase();
+
+            filteredData = originalData.filter(item => {
+                return item.author.toLowerCase().includes(term) ||
+                       (item.caption && item.caption.toLowerCase().includes(term));
+            });
+
+            // Reset sort when searching
+            currentSort.column = null;
+            currentSort.direction = 'asc';
+
+            // Remove sort indicators
+            document.querySelectorAll('th.sortable').forEach(th => {
+                th.classList.remove('sorted-asc', 'sorted-desc');
+            });
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            renderTable();
+        }
+
+        // Initialize event listeners
+        // Toggle tag filter
+        function toggleTagFilter(tag) {
+            if (activeTagFilters.has(tag)) {
+                activeTagFilters.delete(tag);
+            } else {
+                activeTagFilters.add(tag);
+            }
+            applyFilters();
+        }
+
+        // Apply tag filters
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            filteredData = originalData.filter(item => {
+                // If no tags selected - show all
+                // If tags selected - show only items with selected tags
+                const hasActiveTag = activeTagFilters.size === 0 ||
+                    (item.tags && item.tags.some(tag => activeTagFilters.has(tag)));
+
+                // Apply search filter if exists
+                const matchesSearch = !searchTerm ||
+                    item.author.toLowerCase().includes(searchTerm) ||
+                    (item.caption && item.caption.toLowerCase().includes(searchTerm));
+
+                return hasActiveTag && matchesSearch;
+            });
+
+            renderTable();
+        }
+
+        function initEventListeners() {
+            // Sort headers
+            document.querySelectorAll('th.sortable').forEach(th => {
+                th.addEventListener('click', () => sortTable(th.dataset.column));
+            });
+
+            // Sort buttons (mobile)
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                btn.addEventListener('click', () => sortTable(btn.dataset.sort));
+            });
+
+            // Search
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                applyFilters();
+            });
+
+            // Tag filters
+            document.querySelectorAll('.filter-tag:not(.sort-tag)').forEach(tag => {
+                tag.addEventListener('click', () => {
+                    tag.classList.toggle('active');
+                    toggleTagFilter(tag.dataset.tag);
+                });
+            });
+
+            // Sort tags (mobile)
+            document.querySelectorAll('.sort-tag').forEach(sortTag => {
+                sortTag.addEventListener('click', () => {
+                    const sortColumn = sortTag.dataset.sort;
+
+                    // Check if clicking the same active tag
+                    if (sortTag.classList.contains('active')) {
+                        // Reset sort to default
+                        sortTag.classList.remove('active');
+                        currentSort = { column: null, direction: null };
+
+                        // Reset to original filtered data
+                        applyFilters();
+                    } else {
+                        // Remove active from all sort tags
+                        document.querySelectorAll('.sort-tag').forEach(t => t.classList.remove('active'));
+                        // Add active to clicked tag
+                        sortTag.classList.add('active');
+                        // Trigger sort
+                        sortTable(sortColumn);
+                    }
+                });
+            });
+        }
+
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            initEventListeners();
+            loadData();
+        });
+    </script>
 </body>
 </html>
