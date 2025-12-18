@@ -547,7 +547,7 @@
         let filteredData = [];
         let currentSort = { column: null, direction: 'asc' };
         let currentPage = 1;
-        const itemsPerPage = 50;
+        const itemsPerPage = 100;
 
         // Load JSON data
         async function loadData() {
@@ -723,38 +723,47 @@
             renderTable();
         }
 
-        // Event listeners
-        document.querySelectorAll('th.sortable').forEach(th => {
-            th.addEventListener('click', () => sortTable(th.dataset.column));
-        });
+        // Initialize event listeners
+        function initEventListeners() {
+            // Sort headers
+            document.querySelectorAll('th.sortable').forEach(th => {
+                th.addEventListener('click', () => sortTable(th.dataset.column));
+            });
 
-        document.querySelectorAll('.sort-btn').forEach(btn => {
-            btn.addEventListener('click', () => sortTable(btn.dataset.sort));
-        });
+            // Sort buttons (mobile)
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                btn.addEventListener('click', () => sortTable(btn.dataset.sort));
+            });
 
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            filterData(e.target.value);
-        });
+            // Search
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                filterData(e.target.value);
+            });
 
-        document.getElementById('prevBtn').addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                renderTable();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        });
+            // Pagination
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderTable();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
 
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-            if (currentPage < totalPages) {
-                currentPage++;
-                renderTable();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        });
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderTable();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        }
 
-        // Initialize
-        loadData();
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            initEventListeners();
+            loadData();
+        });
     </script>
 </body>
 </html>
