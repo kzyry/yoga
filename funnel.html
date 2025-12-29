@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Продающая воронка: 3-дневный бесплатный марафон по йоге с детальной структурой и психологическими триггерами">
+    <title>Продающая Воронка | Karina Yoga</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #58a6ff;
+            --secondary: #a371f7;
+            --accent: #f85149;
+            --bg-main: #191919;
+            --bg-card: #141414;
+            --border: #252525;
+            --text: #c9d1d9;
+            --text-dim: #5E5E5E;
+            --success: #018725;
+            --gold: #FF9900;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #1e293b;
+            --lighter: #334155;
+            --sidebar-width: 280px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Ubuntu', sans-serif;
+            background: var(--bg-main);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: #0C0C0C;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #303030;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            width: 100%;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-right: 1rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #5e5e5e;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            color: #F8FAFC;
+        }
+
+        .nav-link.active {
+            color: #F8FAFC;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background: transparent;
+            padding: 1.5rem 0 1.5rem 1.5rem;
+            height: calc(100vh - 60px);
+            position: sticky;
+            top: 60px;
+            overflow-y: auto;
+            border-right: 1px solid var(--border);
+        }
+
+        .sidebar h2 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+        }
+
+        .sidebar nav li {
+            margin-bottom: 0.2rem;
+        }
+
+        .sidebar nav a {
+            display: block;
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 0.4rem 0;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .sidebar nav a:hover {
+            color: var(--primary);
+        }
+
+        .sidebar nav a.active {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 2rem 2rem 2rem 1.5rem;
+            background: transparent;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 75px;
+        }
+
+        h1 {
+            color: #F8FAFC;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #F8FAFC;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            padding: 0;
+            border: none;
+            text-transform: lowercase;
+        }
+
+        h2::first-letter {
+            text-transform: uppercase;
+        }
+
+        h3 {
+            color: #F8FAFC;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 1.8rem 0 0.8rem;
+        }
+
+        h4 {
+            color: #F8FAFC;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.6rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+            line-height: 1.7;
+        }
+
+        strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .stat-box {
+            background: #141414;
+            color: white;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-box h4 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .info-box {
+            background: #141414;
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .success-box {
+            background: #141414;
+            border-left: 4px solid var(--success);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .warning-box {
+            background: #141414;
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .danger-box {
+            background: #141414;
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .day-card {
+            background: linear-gradient(135deg, #141414 0%, #1a1a1a 100%);
+            border-left: 5px solid var(--primary);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .day-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .trigger-tag {
+            display: inline-block;
+            background: rgba(88, 166, 255, 0.15);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0.2rem;
+            border: 1px solid rgba(88, 166, 255, 0.3);
+        }
+
+        .message-box {
+            background: #0d1117;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            color: #c9d1d9;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.4);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background: #141414;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0.5rem 0;
+        }
+
+        .metric-label {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .checklist {
+            background: #141414;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .checklist li {
+            list-style: none;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checklist li::before {
+            content: "☐ ";
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .funnel-diagram {
+            background: #141414;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+            color: var(--text);
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 99;
+            border: none;
+            font-size: 1.2rem;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 60px);
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 98;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: fixed;
+                left: -100%;
+                top: 60px;
+                width: 280px;
+                height: calc(100vh - 60px);
+                background: var(--bg-main);
+                z-index: 99;
+                transition: left 0.3s ease;
+                border-right: 1px solid var(--border);
+            }
+
+            .sidebar.active {
+                left: 0;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .nav-link {
+                font-size: 0.85rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            h4 {
+                font-size: 1rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .message-box {
+                font-size: 0.85rem;
+                padding: 1rem;
+            }
+
+            .day-card {
+                padding: 1.5rem;
+            }
+
+            .scroll-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--lighter);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="audience.html" class="nav-link">Аудитория</a>
+                <a href="smm.html" class="nav-link">SMM</a>
+                <a href="analysis.html" class="nav-link">Итог</a>
+                <a href="reels.html" class="nav-link">База Reels</a>
+                <a href="funnel.html" class="nav-link active">Воронка</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>📍 Навигация</h2>
+            <nav>
+                <ul>
+                    <li><a href="#overview">Обзор воронки</a></li>
+                    <li><a href="#day1">День 1: Освобождение</a></li>
+                    <li><a href="#day2">День 2: Энергия + Pitch #1</a></li>
+                    <li><a href="#day3">День 3: Трансформация + Pitch #2</a></li>
+                    <li><a href="#elements">Доп. элементы</a></li>
+                    <li><a href="#metrics">Метрики</a></li>
+                    <li><a href="#psychology">Психология воронки</a></li>
+                    <li><a href="#checklist">Чеклист запуска</a></li>
+                    <li><a href="#optimization">Оптимизация</a></li>
+                    <li><a href="#summary">Краткая сводка</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Title Section -->
+            <section id="intro">
+                <h1>🎯 Продающая Воронка</h1>
+                <h2 style="color: var(--secondary); margin-top: 0.5rem;">"Перезагрузка: Тело, Разум, Баланс"</h2>
+                <p style="font-size: 1.1rem; color: var(--text-dim); margin-top: 1rem;">
+                    3-дневный бесплатный марафон с двумя продающими питчами, психологическими триггерами и детальной структурой сообщений для максимальной конверсии.
+                </p>
+            </section>
+
+            <!-- Overview -->
+            <section id="overview">
+                <h2>📋 Общая архитектура воронки</h2>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Целевой CR</div>
+                        <div class="metric-value">2.5-5%</div>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-dim);">Индустриальный стандарт wellness</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Completion Rate</div>
+                        <div class="metric-value">60%+</div>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-dim);">Через gamification</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Скидка</div>
+                        <div class="metric-value">50%</div>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-dim);">72 часа после старта</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Питчи</div>
+                        <div class="metric-value">День 2+3</div>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-dim);">Эмоциональные пики</p>
+                    </div>
+                </div>
+
+                <h3>Психологические триггеры по дням:</h3>
+                <ul>
+                    <li><strong>День 1:</strong> Quick Win + Commitment Bias + Authority</li>
+                    <li><strong>День 2:</strong> Transformation Evidence + First Pitch + Scarcity Preview</li>
+                    <li><strong>День 3:</strong> Peak Transformation + Social Proof + FOMO + Urgency</li>
+                </ul>
+            </section>
+
+            <!-- Day 1 -->
+            <section id="day1">
+                <h2>🚀 День 1: "Освобождение от напряжения"</h2>
+
+                <div class="day-card">
+                    <h3>Цель дня</h3>
+                    <p>Быстрая победа (Quick Win) → создание доверия → формирование привычки возвращаться в бота</p>
+                </div>
+
+                <h3>Утреннее сообщение (7:00-8:00)</h3>
+                <p><strong>Тема:</strong> "Доброе утро! Твой день 1 начинается СЕЙЧАС"</p>
+
+                <div class="message-box">Привет, [Имя]!
+
+Знаешь, что чувствуют 82% женщин каждое утро?
+Выгорание. Напряжение. "Опять этот день..."
+
+Но сегодня — другой день.
+
+Следующие 3 дня мы вместе будем:
+✨ Снимать стресс, который копился неделями
+🧘‍♀️ Убирать боль в спине без таблеток
+🌅 Возвращать энергию, которую ты забыла
+
+И самое главное — ТЫ УЖЕ ДОСТАТОЧНО ГИБКАЯ для йоги.
+(Это самый большой миф, который мы разрушим сегодня)
+
+📍 Твоя задача на сегодня:
+1️⃣ Утренний ритуал "5 минут себе" (видео ниже)
+2️⃣ Вечерняя практика "Спина без боли" (отправлю в 19:00)
+3️⃣ Отметить выполнение ✅ (чтобы я знала, что ты с нами!)
+
+Поехали? Нажми кнопку ниже 👇</div>
+
+                <div style="margin: 1rem 0;">
+                    <button class="cta-button">✅ Начинаем!</button>
+                    <button class="cta-button" style="background: linear-gradient(135deg, #555 0%, #777 100%);">❓ У меня вопрос</button>
+                </div>
+
+                <h3>Утренняя практика</h3>
+                <div class="info-box">
+                    <h4>Видео: 7-10 минут</h4>
+                    <p><strong>Важно:</strong> 80% смотрят без звука → субтитры обязательны!</p>
+                    <p><strong>Контент:</strong></p>
+                    <ul>
+                        <li><strong>0-3 сек:</strong> ХУК → "Если ты просыпаешься с ощущением, что уже устала..."</li>
+                        <li><strong>3-7 сек:</strong> Признание боли → "65% женщин называют стресс главной причиной для йоги. Ты не одна."</li>
+                        <li><strong>7-10 мин:</strong> 3 простых позы + дыхательная практика + аффирмация</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Триггер:</strong> Completion Bias → визуальный прогресс-бар "День 1/3 🔥"
+                </div>
+
+                <h3>Дневное напоминание (13:00-14:00)</h3>
+                <div class="message-box">[Имя], быстрый чек-ин!
+
+Сделала утреннюю практику? Если да — ты уже впереди 70% участников! 🔥
+
+Если ещё нет — не переживай.
+Йога не про перфекционизм. Йога про возвращение к себе.
+
+У тебя ещё есть время сегодня ❤️
+
+Вечером в 19:00 отправлю вторую практику — она уберёт всё напряжение дня.
+Поставь напоминание, чтобы не пропустить!
+
+📌 Кстати, маленький секрет:
+Те, кто проходит ВСЕ 3 дня марафона, получают специальный бонус в конце.
+Но об этом — позже 😉</div>
+
+                <div style="margin: 1rem 0;">
+                    <span class="trigger-tag">Curiosity</span>
+                    <span class="trigger-tag">FOMO</span>
+                    <span class="trigger-tag">Social Proof</span>
+                </div>
+
+                <h3>Вечерняя практика (19:00)</h3>
+                <p><strong>Тема:</strong> "Скажи «нет» боли в спине"</p>
+                <p><strong>Видео:</strong> 12-15 минут</p>
+
+                <div class="success-box">
+                    <strong>Хук:</strong> "Хроническая боль в спине — причина №1, почему женщины приходят в йога-терапию"
+                    <p style="margin-top: 1rem;"><strong>Практика:</strong></p>
+                    <ul>
+                        <li>5 поз для расслабления поясницы</li>
+                        <li>Техника снятия напряжения с шеи и плеч</li>
+                        <li>Yin-yoga элементы (удержание поз 3-5 минут)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Day 2 -->
+            <section id="day2">
+                <h2>🔥 День 2: "Пробуждение энергии" + Первый PITCH</h2>
+
+                <div class="day-card">
+                    <h3>Цель дня</h3>
+                    <p>Эмоциональный пик → демонстрация глубокой трансформации → <strong style="color: var(--accent);">первое предложение платного курса</strong></p>
+                </div>
+
+                <h3>Утреннее сообщение (7:00)</h3>
+                <div class="message-box">Доброе утро, [Имя]!
+
+День 2 — самый важный день марафона.
+Почему?
+
+Потому что сегодня ты почувствуешь НАСТОЯЩУЮ энергию.
+Не из кофе. Не из силы воли. А из твоего тела.
+
+🎯 Твоя программа на сегодня:
+
+УТРО (прямо сейчас):
+→ Динамическая практика "Пробуждение энергии" (15 мин)
+→ Ты почувствуешь прилив сил на весь день
+
+ВЕЧЕР (19:00):
+→ Медитация "Отпускание стресса" (10 мин)
+→ 78% участников говорят, что после неё засыпают за 5 минут
+
+Но это не всё...
+
+Сегодня у меня есть для тебя кое-что особенное.
+После вечерней практики я покажу тебе то, что изменило жизнь 847 женщин.
+
+Заинтригована? Поехали! 🔥</div>
+
+                <h3>🎯 ПИТЧ #1 (вечером, после медитации)</h3>
+                <div class="danger-box">
+                    <h4>Ключевой момент продаж</h4>
+                    <p>После практики — НЕ обрывать резко! Естественный переход к питчу.</p>
+                </div>
+
+                <div class="message-box">[Имя]...
+
+Ты только что прошла 2 дня марафона.
+
+И я хочу задать тебе вопрос:
+
+Что если бы каждое утро ты просыпалась с ЭТОЙ энергией?
+Что если бы каждый вечер ты отпускала стресс так же легко?
+Что если бы боль в спине ушла... и не вернулась?
+
+Не "когда-нибудь". А через 14 дней.
+
+━━━━━━━━━━━━━━━
+Я создала 14-дневный курс "Перезагрузка: Полная Программа"
+
+Это НЕ просто набор видео.
+Это система, которая прошли 847 женщин.
+
+Вот что внутри:
+
+✅ 14 практик по 15-30 минут (утро + вечер на выбор)
+✅ Персонализированный план для ТВОИХ болей (спина/стресс/сон)
+✅ Telegram-чат с поддержкой 24/7
+✅ Трекер прогресса и чек-листы
+✅ Бонус: Гайд "Ритуалы для баланса"
+✅ Доступ навсегда + все обновления
+
+━━━━━━━━━━━━━━━
+
+💰 Обычная цена: 4900₽
+
+НО.
+
+Ты здесь не случайно.
+Ты прошла 2 дня марафона.
+Ты — не та, кто откладывает заботу о себе.
+
+ТОЛЬКО для участников марафона:
+🔥 2450₽ (-50%)
+
+⏰ Спецпредложение действует 72 часа
+(До воскресенья, 23:59)
+
+После этого — только полная цена.</div>
+
+                <h3>Триггеры в питче #1:</h3>
+                <div style="margin: 1rem 0;">
+                    <span class="trigger-tag">Transformation Evidence</span>
+                    <span class="trigger-tag">Scarcity</span>
+                    <span class="trigger-tag">Urgency</span>
+                    <span class="trigger-tag">FOMO</span>
+                    <span class="trigger-tag">Social Proof</span>
+                    <span class="trigger-tag">Pain Amplification</span>
+                    <span class="trigger-tag">Dream State</span>
+                    <span class="trigger-tag">Bonus Scarcity</span>
+                    <span class="trigger-tag">Risk Reversal</span>
+                </div>
+            </section>
+
+            <!-- Day 3 -->
+            <section id="day3">
+                <h2>💎 День 3: "Трансформация" + Финальный PITCH</h2>
+
+                <div class="day-card">
+                    <h3>Цель дня</h3>
+                    <p>Пиковая трансформация → последний push → закрытие возражений → дедлайн</p>
+                </div>
+
+                <h3>Утреннее сообщение (7:00)</h3>
+                <div class="message-box">Доброе утро, [Имя]!
+
+Финальный день марафона 🎯
+
+Ты дошла до конца.
+И это уже говорит о тебе больше, чем ты думаешь.
+
+80% людей бросают на середине.
+Но не ты.
+
+Сегодня — день, когда всё складывается воедино.</div>
+
+                <h3>🎯 ПИТЧ #2 (вечером, финальный)</h3>
+                <div class="danger-box">
+                    <h4>Максимальное давление</h4>
+                    <p>Все триггеры включены. Это последний шанс для конверсии.</p>
+                </div>
+
+                <div class="message-box">[Имя].
+
+Ты прошла 3 дня.
+Ты дошла до конца.
+Ты — герой.
+
+И сейчас я хочу сказать тебе правду.
+
+━━━━━━━━━━━━━━━
+
+Этот марафон — не конец.
+Это начало.
+
+Настоящая трансформация требует времени.
+Не 3 дней. 14 дней. Месяц. Привычка.
+
+━━━━━━━━━━━━━━━
+
+💰 Полная цена: 4900₽
+
+ТВОЯ ЦЕНА (только для участников марафона):
+🔥 2450₽ (-50%)
+
+НО.
+
+Это предложение сгорает через 31 час.
+(Воскресенье, 23:59)
+
+После этого — только полная цена.
+Навсегда.
+
+━━━━━━━━━━━━━━━
+
+Давай честно.
+
+Ты уже знаешь, что это работает.
+Ты почувствовала разницу за 3 дня.
+
+Вопрос не в том, "работает ли это".
+Вопрос в том: "А я достойна продолжить?"
+
+И ответ — ДА.
+
+━━━━━━━━━━━━━━━
+
+P.S. Гарантия возврата денег 7 дней.
+Если курс не подойдёт — вернём всё до копейки. Без вопросов.</div>
+
+                <h3>Триггеры в питче #2:</h3>
+                <div style="margin: 1rem 0;">
+                    <span class="trigger-tag">Achievement Recognition</span>
+                    <span class="trigger-tag">Scarcity</span>
+                    <span class="trigger-tag">Urgency</span>
+                    <span class="trigger-tag">FOMO</span>
+                    <span class="trigger-tag">Identity Shift</span>
+                    <span class="trigger-tag">Pain Amplification</span>
+                    <span class="trigger-tag">Dream State Contrast</span>
+                    <span class="trigger-tag">Worthiness Trigger</span>
+                    <span class="trigger-tag">Risk Reversal</span>
+                    <span class="trigger-tag">Authority + Honesty</span>
+                    <span class="trigger-tag">Last Chance</span>
+                </div>
+
+                <h3>Напоминания до дедлайна</h3>
+                <div class="warning-box">
+                    <p><strong>Воскресенье, 10:00 (за 14 часов):</strong> Empathy + Pain Amplification</p>
+                    <p><strong>Воскресенье, 18:00 (за 6 часов):</strong> Urgency + Social Proof + Value Reframe</p>
+                    <p><strong>Воскресенье, 22:00 (за 2 часа):</strong> Maximum Urgency + Final Choice</p>
+                </div>
+            </section>
+
+            <!-- Additional Elements -->
+            <section id="elements">
+                <h2>📊 Дополнительные элементы воронки</h2>
+
+                <h3>1. Чат участников (обязательно!)</h3>
+                <div class="success-box">
+                    <p><strong>Цель:</strong> Social Proof + Community + Completion Rate</p>
+                    <p><strong>Правила:</strong></p>
+                    <ul>
+                        <li>Ежедневные посты "Я прошла День X!" → геймификация</li>
+                        <li>Победитель дня получает бесплатную консультацию</li>
+                        <li>Модерация 24/7 → быстрые ответы на вопросы</li>
+                    </ul>
+                </div>
+
+                <h3>2. Трекер прогресса в боте</h3>
+                <div class="info-box">
+                    <pre style="margin: 1rem 0; font-family: monospace;">Твой прогресс:
+
+День 1: ✅
+День 2: ✅
+День 3: ⏳
+
+Ты прошла: 67% марафона 🔥
+Осталось: 1 день</pre>
+                    <p><strong>Триггер:</strong> Completion Bias + Achievement Visualization</p>
+                </div>
+
+                <h3>3. FAQ — Обработка возражений</h3>
+                <div class="stat-box">
+                    <p><strong>Возражение 1: "У меня нет времени"</strong></p>
+                    <p>→ "15 минут утром — это 1% твоего дня. Остальные 99% ты отдаёшь другим. Разве ты не стоишь этого 1%?"</p>
+
+                    <p style="margin-top: 1rem;"><strong>Возражение 2: "Я не гибкая"</strong></p>
+                    <p>→ "84% участниц говорили то же самое. Йога — не про гибкость. Йога — про возвращение к себе."</p>
+
+                    <p style="margin-top: 1rem;"><strong>Возражение 3: "Дорого"</strong></p>
+                    <p>→ "2450₽ = 175₽/день. Это меньше, чем кофе на вынос."</p>
+
+                    <p style="margin-top: 1rem;"><strong>Возражение 4: "А вдруг не подойдёт?"</strong></p>
+                    <p>→ "Гарантия возврата 7 дней. Попробуй, реши, верну деньги без вопросов."</p>
+                </div>
+
+                <h3>4. Сегментация не купивших</h3>
+                <ul>
+                    <li><strong>Сегмент А (прошли все 3 дня):</strong> Через 7 дней → новый оффер "Мини-курс 7 дней" за 1490₽</li>
+                    <li><strong>Сегмент Б (прошли 1-2 дня):</strong> Re-engagement: "Жаль, что ты ушла. Вот что пропустила..."</li>
+                    <li><strong>Сегмент В (подписались, но не начали):</strong> Барьер-опрос → персонализированный подход</li>
+                </ul>
+            </section>
+
+            <!-- Metrics -->
+            <section id="metrics">
+                <h2>🎯 Метрики для отслеживания</h2>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Completion Rate</div>
+                        <div class="metric-value">60%+</div>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-dim);">% прошедших все 3 дня</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Conversion Rate</div>
+                        <div class="metric-value">2.5-5%</div>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-dim);">% купивших курс</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Open Rate</div>
+                        <div class="metric-value">70%+</div>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-dim);">Открываемость сообщений</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Engagement</div>
+                        <div class="metric-value">80%+</div>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-dim);">Просмотры практик</p>
+                    </div>
+                </div>
+
+                <div class="warning-box" style="margin-top: 2rem;">
+                    <h4>Если метрики ниже целевых:</h4>
+                    <ul>
+                        <li>Completion Rate &lt;60% → усилить engagement тактики</li>
+                        <li>CR &lt;2.5% → тестировать триггеры и timing питчей</li>
+                        <li>Open Rate &lt;70% → улучшить заголовки и время отправки</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Psychology -->
+            <section id="psychology">
+                <h2>🧠 Психологическая архитектура воронки</h2>
+
+                <h3>Эмоциональный путь участника:</h3>
+
+                <div class="day-card">
+                    <h4>День 1</h4>
+                    <p><strong>Эмоция:</strong> Любопытство + Надежда</p>
+                    <p><strong>Барьер:</strong> "А вдруг не получится?"</p>
+                    <p><strong>Решение:</strong> Quick Win → "О! Это работает!"</p>
+                </div>
+
+                <div class="day-card">
+                    <h4>День 2</h4>
+                    <p><strong>Эмоция:</strong> Воодушевление + Доверие</p>
+                    <p><strong>Барьер:</strong> "Но это временно..."</p>
+                    <p><strong>Решение:</strong> Первый питч → "Могу сделать постоянным!"</p>
+                </div>
+
+                <div class="day-card">
+                    <h4>День 3</h4>
+                    <p><strong>Эмоция:</strong> Трансформация + Решимость</p>
+                    <p><strong>Барьер:</strong> "Но дорого/страшно..."</p>
+                    <p><strong>Решение:</strong> Финальный питч + гарантии → "Делаю это!"</p>
+                </div>
+            </section>
+
+            <!-- Checklist -->
+            <section id="checklist">
+                <h2>✅ Чеклист внедрения</h2>
+
+                <div class="checklist">
+                    <ul>
+                        <li>Все видео готовы (7 практик + 3 медитации)</li>
+                        <li>Субтитры на всех видео (80% без звука!)</li>
+                        <li>Автоматизация в боте настроена</li>
+                        <li>Чат участников создан + правила</li>
+                        <li>Трекер прогресса работает</li>
+                        <li>FAQ-ответы загружены</li>
+                        <li>Платёжная система подключена</li>
+                        <li>Гарантия возврата оформлена юридически</li>
+                        <li>Бонусы готовы (SOS-практики, гайды)</li>
+                        <li>Полный курс готов к выдаче</li>
+                        <li>Email/SMS дублирование (опционально)</li>
+                        <li>Аналитика настроена</li>
+                        <li>Тест всей воронки от начала до конца</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Optimization -->
+            <section id="optimization">
+                <h2>🚀 Пост-запуск: Оптимизация</h2>
+
+                <h3>A/B тестирование:</h3>
+
+                <div class="stat-box">
+                    <h4>Тест 1: Timing питча</h4>
+                    <p>Вариант A: День 2 вечер</p>
+                    <p>Вариант B: День 2 утро</p>
+                    <p><strong>→ Смотреть CR</strong></p>
+                </div>
+
+                <div class="stat-box">
+                    <h4>Тест 2: Скидка</h4>
+                    <p>Вариант A: 50%</p>
+                    <p>Вариант B: 40% + доп. бонус</p>
+                    <p><strong>→ Смотреть CR и revenue</strong></p>
+                </div>
+
+                <div class="stat-box">
+                    <h4>Тест 3: Urgency</h4>
+                    <p>Вариант A: 72 часа</p>
+                    <p>Вариант B: 48 часов</p>
+                    <p><strong>→ Смотреть CR и completion rate</strong></p>
+                </div>
+
+                <div class="stat-box">
+                    <h4>Тест 4: Хуки в видео</h4>
+                    <p>Вариант A: Негативный ("Если боль убивает...")</p>
+                    <p>Вариант B: Позитивный ("Представь утро без боли...")</p>
+                    <p><strong>→ Смотреть engagement</strong></p>
+                </div>
+            </section>
+
+            <!-- Summary -->
+            <section id="summary">
+                <h2>📈 Краткая сводка воронки</h2>
+
+                <div class="funnel-diagram">ВХОД
+  ↓
+[3-ДНЕВНЫЙ МАРАФОН - БЕСПЛАТНО]
+  │
+  ├─ День 1: Quick Win (доверие)
+  │   └─ Утро: 7 мин практика
+  │   └─ Вечер: 12 мин "Спина без боли"
+  │
+  ├─ День 2: Трансформация + ПИТЧ #1
+  │   └─ Утро: 15 мин "Энергия"
+  │   └─ Вечер: Медитация + ОФФЕР (50% OFF, 72 часа)
+  │   └─ CR Target: 1-2%
+  │
+  └─ День 3: Пик + ПИТЧ #2
+      └─ Утро: 20 мин комплекс
+      └─ День: Social Proof Avalanche
+      └─ Вечер: Финальный питч + Max Urgency
+      └─ CR Target: 3-5%
+  ↓
+[ПЛАТНЫЙ КУРС - 2450₽ со скидкой 50%]
+  │
+  ├─ Купили → Онбординг + Курс 14 дней
+  └─ Не купили → Сегментация + Ретаргет через 7 дней</div>
+
+                <div class="success-box" style="margin-top: 2rem;">
+                    <h3>💎 Секретный соус: Почему эта воронка сработает</h3>
+                    <ul>
+                        <li>✅ <strong>3 дня</strong> — оптимум для quick wins + momentum</li>
+                        <li>✅ <strong>Боли из audience.html</strong> — бьём точно в цель</li>
+                        <li>✅ <strong>Питч на День 2</strong> — эмоциональный пик</li>
+                        <li>✅ <strong>50% скидка</strong> — достаточно для urgency</li>
+                        <li>✅ <strong>72 часа</strong> — идеальное окно решения</li>
+                        <li>✅ <strong>Completion bias</strong> — люди хотят закончить</li>
+                        <li>✅ <strong>Social proof</strong> — отзывы реальных женщин</li>
+                        <li>✅ <strong>Risk reversal</strong> — гарантия возврата</li>
+                        <li>✅ <strong>Multi-touch</strong> — 6+ точек контакта</li>
+                        <li>✅ <strong>Identity shift</strong> — "ты не та, кто сдаётся"</li>
+                    </ul>
+                </div>
+
+                <div class="info-box" style="margin-top: 2rem;">
+                    <h3>📊 Основа воронки: Боли аудитории</h3>
+                    <p><strong>Физические боли:</strong></p>
+                    <ul>
+                        <li>Хроническая боль в спине (главная причина йога-терапии)</li>
+                        <li>Симптомы менопаузы (80% женщин)</li>
+                        <li>Проблемы со сном и низкая энергия</li>
+                    </ul>
+
+                    <p><strong>Эмоциональные боли:</strong></p>
+                    <ul>
+                        <li>Стресс и тревога (65% главная мотивация)</li>
+                        <li>Выгорание на работе (82% в зоне риска)</li>
+                        <li>Перфекционизм и сравнение в соцсетях</li>
+                    </ul>
+
+                    <p><strong>Барьеры входа:</strong></p>
+                    <ul>
+                        <li>"Я недостаточно гибкая" (самый частый страх)</li>
+                        <li>Нехватка времени</li>
+                        <li>Стоимость</li>
+                    </ul>
+                </div>
+            </section>
+
+            <div style="text-align: center; margin: 4rem 0; padding: 2rem; background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-main) 100%); border-radius: 12px;">
+                <p style="font-size: 1.2rem; color: var(--primary);">
+                    Все элементы воронки построены на данных из анализа аудитории и SMM-стратегий для максимальной конверсии.
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Mobile menu toggle
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.querySelector('.scroll-to-top');
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+
+        // Active navigation link
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.sidebar nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close sidebar on mobile
+                    if (window.innerWidth <= 768) {
+                        toggleSidebar();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
