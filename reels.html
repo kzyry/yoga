@@ -334,6 +334,7 @@
             font-size: 0.9rem;
             width: 100px;
             font-family: 'Space Mono', 'Monaco', monospace;
+            line-height: 40px;
         }
 
         th.sortable::after {
@@ -389,19 +390,20 @@
         }
 
         td {
-            padding: 6px 16px;
+            padding: 0 16px;
             border-bottom: 1px solid #252525;
             vertical-align: middle;
-            height: 40px;
-            max-height: 40px;
+            height: 40px !important;
+            max-height: 40px !important;
             font-size: 15px;
             background: #191919;
-            line-height: 1.2;
+            line-height: 40px;
+            box-sizing: border-box;
         }
 
         tbody tr {
-            height: 40px;
-            max-height: 40px;
+            height: 40px !important;
+            max-height: 40px !important;
             background: #191919;
             transition: background 0.2s ease;
         }
@@ -420,23 +422,26 @@
             width: auto;
             display: flex;
             align-items: center;
-            gap: 8px;
-            height: 40px;
+            gap: 6px;
+            height: 40px !important;
+            max-height: 40px !important;
             overflow: hidden;
+            line-height: normal;
         }
 
         .author-checkbox {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             cursor: pointer;
             accent-color: var(--primary);
             border-radius: 50%;
             flex-shrink: 0;
+            margin: 0;
         }
 
         .author-avatar {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             object-fit: cover;
             border: 1px solid var(--border);
@@ -464,6 +469,7 @@
             font-family: 'Space Mono', 'Monaco', monospace;
             text-align: right;
             width: 250px;
+            line-height: 40px;
         }
 
         .views-cell.high-views {
@@ -480,11 +486,12 @@
             font-size: 15px;
             text-align: right;
             width: 250px;
+            line-height: 40px;
         }
 
         .tags-cell {
             width: 250px;
-            line-height: 1.5;
+            line-height: 40px;
             text-align: right;
             padding-right: 16px;
         }
