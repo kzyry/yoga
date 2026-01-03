@@ -389,16 +389,19 @@
         }
 
         td {
-            padding: 8px 16px;
+            padding: 6px 16px;
             border-bottom: 1px solid #252525;
             vertical-align: middle;
             height: 40px;
+            max-height: 40px;
             font-size: 15px;
             background: #191919;
+            line-height: 1.2;
         }
 
         tbody tr {
             height: 40px;
+            max-height: 40px;
             background: #191919;
             transition: background 0.2s ease;
         }
@@ -418,6 +421,8 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            height: 40px;
+            overflow: hidden;
         }
 
         .author-checkbox {
