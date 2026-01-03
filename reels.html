@@ -415,6 +415,31 @@
             font-weight: 600;
             color: #F8FAFC;
             width: auto;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .author-checkbox {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--primary);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .author-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .author-name {
+            flex: 1;
         }
 
         .url-cell a {
@@ -612,6 +637,19 @@
             color: #F8FAFC;
             font-size: 0.95rem;
             word-break: break-word;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .reel-author .author-checkbox {
+            width: 16px;
+            height: 16px;
+        }
+
+        .reel-author .author-avatar {
+            width: 20px;
+            height: 20px;
         }
 
         .reel-num {
@@ -825,6 +863,46 @@
         let filteredData = [];
         let currentSort = { column: null, direction: 'asc' };
         let activeTagFilters = new Set(); // Empty by default - show all
+        let checkedAuthors = new Set(); // Отслеживание отмеченных авторов
+
+        // LocalStorage ключ
+        const STORAGE_KEY = 'reels_checked_authors';
+
+        // Загрузка состояния чекбоксов из localStorage
+        function loadCheckedAuthors() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    checkedAuthors = new Set(JSON.parse(saved));
+                }
+            } catch (e) {
+                console.error('Ошибка загрузки данных:', e);
+            }
+        }
+
+        // Сохранение состояния чекбоксов в localStorage
+        function saveCheckedAuthors() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify([...checkedAuthors]));
+            } catch (e) {
+                console.error('Ошибка сохранения данных:', e);
+            }
+        }
+
+        // Обработка изменения чекбокса
+        function toggleAuthorCheck(author, isChecked) {
+            if (isChecked) {
+                checkedAuthors.add(author);
+            } else {
+                checkedAuthors.delete(author);
+            }
+            saveCheckedAuthors();
+        }
+
+        // Получение пути к аватару
+        function getAvatarPath(author) {
+            return `img/${author}.jpg`;
+        }
 
         // Load JSON data
         async function loadData() {
@@ -890,13 +968,27 @@
                     viewsClass += ' medium-views';
                 }
 
+                const isChecked = checkedAuthors.has(item.author);
+                const avatarPath = getAvatarPath(item.author);
+
                 return `
-                <tr onclick="window.open('${item.url}', '_blank')" style="cursor: pointer;">
+                <tr style="cursor: pointer;">
                     <td class="num-cell">${globalIndex}</td>
-                    <td class="author-cell">${item.author}</td>
-                    <td class="${viewsClass}">${formatNumber(item.views)}</td>
-                    <td class="tags-cell">${tagsHtml}</td>
-                    <td class="date-cell">${formatDate(item.date)}</td>
+                    <td class="author-cell" onclick="event.stopPropagation(); window.open('${item.url}', '_blank')">
+                        <input type="checkbox"
+                               class="author-checkbox"
+                               data-author="${item.author}"
+                               ${isChecked ? 'checked' : ''}
+                               onclick="event.stopPropagation()">
+                        <img src="${avatarPath}"
+                             alt="${item.author}"
+                             class="author-avatar"
+                             onerror="this.style.display='none'">
+                        <span class="author-name">${item.author}</span>
+                    </td>
+                    <td class="${viewsClass}" onclick="window.open('${item.url}', '_blank')">${formatNumber(item.views)}</td>
+                    <td class="tags-cell" onclick="window.open('${item.url}', '_blank')">${tagsHtml}</td>
+                    <td class="date-cell" onclick="window.open('${item.url}', '_blank')">${formatDate(item.date)}</td>
                 </tr>
                 `;
             }).join('');
@@ -916,10 +1008,25 @@
                     viewsClass += ' medium-views';
                 }
 
+                const isChecked = checkedAuthors.has(item.author);
+                const avatarPath = getAvatarPath(item.author);
+
                 return `
                 <a href="${item.url}" target="_blank" class="reel-card">
                     <div class="reel-card-header">
-                        <div class="reel-author"><span class="reel-num">${globalIndex}</span> ${item.author}</div>
+                        <div class="reel-author">
+                            <input type="checkbox"
+                                   class="author-checkbox"
+                                   data-author="${item.author}"
+                                   ${isChecked ? 'checked' : ''}
+                                   onclick="event.preventDefault(); event.stopPropagation();">
+                            <img src="${avatarPath}"
+                                 alt="${item.author}"
+                                 class="author-avatar"
+                                 onerror="this.style.display='none'">
+                            <span class="reel-num">${globalIndex}</span>
+                            ${item.author}
+                        </div>
                         <div class="${viewsClass}">${formatNumber(item.views)}</div>
                     </div>
                     <div class="reel-tags">
@@ -929,6 +1036,25 @@
                 </a>
                 `;
             }).join('');
+
+            // Attach event listeners to checkboxes
+            attachCheckboxListeners();
+        }
+
+        // Attach event listeners to all checkboxes
+        function attachCheckboxListeners() {
+            document.querySelectorAll('.author-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function(e) {
+                    const author = this.dataset.author;
+                    const isChecked = this.checked;
+                    toggleAuthorCheck(author, isChecked);
+
+                    // Update all checkboxes for this author
+                    document.querySelectorAll(`.author-checkbox[data-author="${author}"]`).forEach(cb => {
+                        cb.checked = isChecked;
+                    });
+                });
+            });
         }
 
         // Sort table
@@ -1118,6 +1244,7 @@
 
         // Initialize on DOM load
         document.addEventListener('DOMContentLoaded', () => {
+            loadCheckedAuthors(); // Load saved checkbox state
             initEventListeners();
             loadData();
         });
